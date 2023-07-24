@@ -1,0 +1,21 @@
+.profile__buttonSubmit {
+    margin: 223px auto 0;
+    padding: 15px 0;
+    width: 410px;
+    color: #fff;
+    background-color: #3456F3;
+    border: none;
+    border-radius: 3px;
+    transition: opacity 0.6s;
+}
+
+.profile__buttonSubmit:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 760px) {
+    .profile__buttonSubmit {
+        width: 260px;
+    }
+}

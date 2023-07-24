@@ -1,0 +1,14 @@
+.aboutContainer {
+    padding-top: 66px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 760px) {
+    .aboutContainer {
+        padding-top: 60px;
+        flex-direction: column-reverse;
+        row-gap: 40px;
+        align-items: center;
+    }
+}

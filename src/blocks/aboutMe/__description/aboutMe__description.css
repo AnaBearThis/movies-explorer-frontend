@@ -1,0 +1,23 @@
+.aboutMe__description {
+    margin: 0;
+    padding: 26px 0 100px;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 900px) {
+    .aboutMe__description {
+        padding: 20px 0 87px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .aboutMe__description {
+        padding-bottom: 40px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+}

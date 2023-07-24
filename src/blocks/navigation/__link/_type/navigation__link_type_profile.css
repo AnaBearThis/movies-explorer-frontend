@@ -1,0 +1,11 @@
+.navigation__link_type_profile {
+    margin: auto 0 90px;
+    padding: 0;
+    align-self: center;
+}
+
+@media screen and (max-width: 760px) {
+    .navigation__link_type_profile {
+        margin-bottom: 46px;
+    }
+}

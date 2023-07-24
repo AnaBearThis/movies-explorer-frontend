@@ -1,0 +1,14 @@
+.notFound__code {
+    margin: 0 auto;
+    padding: 0;
+    height: 169px;
+    font-size: 140px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 760px) {
+    .notFound__code {
+        font-size: 80px;
+        height: 97px;
+    }
+}

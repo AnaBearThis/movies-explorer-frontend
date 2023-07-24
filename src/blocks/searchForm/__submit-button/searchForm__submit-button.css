@@ -1,0 +1,19 @@
+.searchForm__submit-button {
+    margin: 0;
+    padding: 0;
+    height: 43px;
+    border: none;
+    background-color: transparent;
+    transition: opacity 0.6s;
+}
+
+.searchForm__submit-button:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 760px) {
+    .searchForm__submit-button {
+        padding-bottom: 9px;
+    }
+}

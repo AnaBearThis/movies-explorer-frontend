@@ -1,0 +1,30 @@
+.sign__buttonSubmit {
+    margin: 153px 0 17px;
+    padding: 14px 0;
+    width: 396px;
+    color: #fff;
+    font-size: 14px;
+    background-color: #3456F3;
+    border: none;
+    border-radius: 3px;
+    transition: opacity 0.6s;
+}
+
+.sign__buttonSubmit:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 900px) {
+    .sign__buttonSubmit {
+        margin: 152px 0 16px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .sign__buttonSubmit {
+        margin: 242px 0 0;
+        width: 260px;
+        font-size: 12px;
+    }
+}

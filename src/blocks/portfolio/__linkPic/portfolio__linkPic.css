@@ -1,0 +1,20 @@
+.portfolio__linkPic {
+    margin: 0;
+    padding: 0;
+    font-size: 30px;
+    line-height: 60px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 900px) {
+    .portfolio__linkPic {
+        font-size: 28px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .portfolio__linkPic {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}

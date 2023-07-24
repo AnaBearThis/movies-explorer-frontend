@@ -1,0 +1,12 @@
+.sign__heading {
+    margin: 0;
+    padding: 40px 0 16px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 760px) {
+    .sign__heading {
+        padding: 50px 0 56px;
+    }
+}

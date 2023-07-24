@@ -1,0 +1,12 @@
+.header__iconMenu {
+    visibility: hidden;
+    width: 44px;
+    background-image: url(../../../images/menu_icon.png);
+    background-size: contain;
+}
+
+@media screen and (max-width: 900px) {
+    .header__iconMenu {
+        visibility: visible;
+    }
+}

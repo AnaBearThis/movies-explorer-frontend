@@ -1,0 +1,21 @@
+.notFound__link {
+    margin: 184px auto 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #3456F3;
+    transition: opacity 0.6s;
+}
+
+.notFound__link:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 760px) {
+    .notFound__link {
+        margin-top: 284px;
+        font-size: 12px;
+    }
+}

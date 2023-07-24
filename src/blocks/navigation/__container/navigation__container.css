@@ -1,0 +1,15 @@
+.navigation__container {
+    width: 520px;
+    height: 100%;
+    position: fixed;
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media screen and (max-width: 760px) {
+    .navigation__container {
+        width: 100%;
+    }
+}

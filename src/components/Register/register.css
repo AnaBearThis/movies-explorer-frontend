@@ -1,0 +1,21 @@
+.register {
+    margin: 0 auto;
+    padding: 70px 0;
+    max-width: 396px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fafafa;
+}
+
+@media screen and (max-width: 900px) {
+    .register {
+        padding: 232px 0 0;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .register {
+        padding: 56px 30px 30px;
+        align-items: center;
+    }
+}

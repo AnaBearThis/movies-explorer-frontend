@@ -1,0 +1,16 @@
+.about-me {
+    padding: 107px 70px 0;
+    background-color: #fafafa;
+}
+
+@media screen and (max-width: 900px) {
+    .about-me {
+        padding: 90px 50px 0;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .about-me {
+        padding: 70px 14px 0;
+    }
+}

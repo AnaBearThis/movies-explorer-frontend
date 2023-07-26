@@ -1,0 +1,20 @@
+.description {
+    padding: 70px 0 110px;
+    display: flex;
+    column-gap: 40px;
+}
+
+@media screen and (max-width: 900px) {
+    .description {
+        padding-bottom: 93px;
+        column-gap: 37px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .description {
+        padding: 60px 0;
+        flex-direction: column;
+        row-gap: 56px;
+    }
+}

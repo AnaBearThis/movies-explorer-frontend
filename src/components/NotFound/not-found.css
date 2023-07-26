@@ -1,0 +1,19 @@
+.not-found {
+    padding: 246px 0 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fafafa;
+}
+
+@media screen and (max-width: 900px) {
+    .not-found {
+        padding: 408px 0 0;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .not-found {
+        padding: 329px 0 30px;
+    }
+}

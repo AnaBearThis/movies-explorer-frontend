@@ -1,0 +1,11 @@
+.link-bar {
+    display: flex;
+    height: 32px;
+    align-items: center;
+}
+
+@media screen and (max-width: 760px) {
+    .link-bar {
+        column-gap: 14px;
+    }
+}

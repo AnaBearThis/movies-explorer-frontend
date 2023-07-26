@@ -1,0 +1,21 @@
+.profile__input-edit {
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-align: right;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.profile__input-edit::placeholder {
+    color: #000;
+}
+
+.profile__input-edit:hover {
+    cursor: pointer;
+}
+
+.profile__input-edit:focus {
+    outline: none;
+    border-bottom: 1px solid #3456F3;
+}

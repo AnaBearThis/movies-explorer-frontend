@@ -1,0 +1,9 @@
+.link-bar_type_header {
+    column-gap: 16px;
+}
+
+@media screen and (max-width: 900px) {
+    .link-bar_type_header {
+        visibility: hidden;
+    }
+}

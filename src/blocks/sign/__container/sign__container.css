@@ -1,4 +1,8 @@
 .sign__container {
     margin: 0;
     padding: 24px 0 0;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

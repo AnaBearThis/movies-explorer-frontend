@@ -1,0 +1,13 @@
+.link-bar__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    column-gap: 30px;
+}
+
+@media screen and (max-width: 760px) {
+    .link-bar__list {
+        column-gap: 14px;
+    }
+}

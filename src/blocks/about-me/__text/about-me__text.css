@@ -1,0 +1,11 @@
+.about-me__text {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+    .about-me__text {
+        max-width: 364px;
+    }
+}

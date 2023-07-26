@@ -1,0 +1,11 @@
+.movies-card__name-container {
+    padding: 0 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 760px) {
+    .movies-card__name-container {
+        padding: 0 14px;
+    }
+}

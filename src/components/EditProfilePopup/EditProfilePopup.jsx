@@ -1,13 +1,13 @@
 function EditProfilePopup(props) {
     return (
-        <div className={`editProfilePopup ${props.isOpen && 'editProfilePopup_opened'}`}>
-            <div className="editProfilePopup__container">
+        <div className={`edit-profile-popup ${props.isOpen && 'edit-profile-popup_opened'}`}>
+            <div className="edit-profile-popup__container">
                 <p className="profile__greeting">Привет, Настасья!</p>
                 <form className="profile__formEdit">
                     <div className="profile__container">
-                        <p className="profile__name">Имя</p>
+                        <label className="profile__name" htmlFor="input-name">Имя</label>
                         <input
-                            className="profile__inputEdit"
+                            className="profile__input-edit"
                             id="input-name"
                             type="text"
                             name="name"
@@ -17,18 +17,18 @@ function EditProfilePopup(props) {
                             maxLength="40"/>
                     </div>
                     <div className="profile__container profile__container_type_email">
-                        <p className="profile__name">E-mail</p>
+                        <label className="profile__name" htmlFor="input-email">E-mail</label>
                         <input
-                            className="profile__inputEdit"
+                            className="profile__input-edit"
                             id="input-email"
                             type="email"
                             name="email"
                             placeholder="pochta@yandex.ru"
                             required/>
                     </div>
-                        <button className="profile__buttonSubmit" type="submit" value='save'>Сохранить</button>
+                        <button className="profile__button-submit" type="submit" value='save'>Сохранить</button>
                 </form>
-                <button className="editProfilePopup__buttonClose" type="button" aria-label="закрыть" onClick={props.onClose} />
+                <button className="edit-profile-popup__buttonClose" type="button" aria-label="закрыть" onClick={props.onClose} />
             </div>    
         </div>
     )

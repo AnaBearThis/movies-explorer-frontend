@@ -1,25 +1,26 @@
-import searchTransp from '../../images/searchTransparent.png';
-import searchColor from '../../images/searchColored.png';
+import searchTransp from '../../images/iconsearchTransparent.svg';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
 
 function SearchForm() {
     return (
-        <section className="searchForm">
-            <form className="searchForm__form">
-                <img className="searchForm__icon" src={searchTransp} alt='иконка поиска'/>
-                <input 
-                    className='searchForm__input'
-                    // value={a}
-                    // onChange={a}
-                    id="input-film"
-                    type="string"
-                    name="filmName"
-                    placeholder="Фильм"
-                    required
-                />
-                <button type="submit" className="searchForm__submit-button" value="искать"><img className='searchForm__submit-button-icon' src={searchColor} alt='искать'/></button>  
+        <section className="search-form">
+            <form className="search-form__form">
+                <div className='search-form__container'>
+                    <img className="search-form__icon" src={searchTransp} alt='иконка поиска'/>
+                    <input 
+                        className='search-form__input'
+                        // value={a}
+                        // onChange={a}
+                        id="input-film"
+                        type="string"
+                        name="filmName"
+                        placeholder="Фильм"
+                        required
+                    />
+                    <button type="submit" className="search-form__submit-button" value="искать"></button> 
+                </div> 
+                <FilterCheckbox />
             </form>
-            <FilterCheckbox />
         </section>
     )
 }

@@ -1,0 +1,49 @@
+.search-form__check {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.search-form__check+label:hover::before {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.search-form__check+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+.search-form__check+label::before {
+    padding-right: 16px;
+    content: '';
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+    background-image: url(../../../images/checkboxInactive.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: opacity 0.6s;
+}
+
+.search-form__check:checked+label::before {
+    background-image: url(../../../images/checkboxActive.svg);
+}
+
+@media screen and (max-width: 900px) {
+    .search-form__check+label {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .search-form__check+label::before{
+        padding-right: 13px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .search-form__check+label {
+        font-size: 11px;
+    }
+}

@@ -4,14 +4,14 @@
     background-image: url(../../images/promo-image.png);
     background-size: 722px;
     background-repeat: no-repeat;
-    background-position: 488px 330px;
+    background-position: 488px 335px;
     height: 616px;
 }
 
 @media screen and (max-width: 900px) {
     .promo {
-        padding: 18px 30px 0;
-        height: 918px;
+        padding: 18px 25px 0;
+        height: 900px;
         background-size: 680px;
         background-position: 44px 618px;
     }
@@ -20,8 +20,8 @@
 @media screen and (max-width: 760px) {
     .promo {
         padding: 18px 10px 0;
-        height: 630px;
-        background-size: 666px;
-        background-position: -173px 394px;
+        height: 685px;
+        background-size: 680px;
+        background-position: -180px 435px;
     }
 }

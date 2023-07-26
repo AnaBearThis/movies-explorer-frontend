@@ -6,13 +6,13 @@ import Footer from '../Footer/Footer.jsx';
 
 function Movies() {
     return (
-        <div className="movies">
+        <main className="movies">
             <Header />
             <SearchForm />
             <MoviesCardList />
             <More />
             <Footer />
-        </div>
+        </main>
     )
 }
 

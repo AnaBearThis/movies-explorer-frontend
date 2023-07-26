@@ -1,8 +1,9 @@
 .app {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     background-color: #fafafa;
-    width: 100%;
+    max-width: 1280px;
     height: 100vh;
+    display: grid;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
 }

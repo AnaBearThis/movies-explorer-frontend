@@ -8,12 +8,12 @@
 
 @media screen and (max-width: 900px) {
     .profile {
-        padding: 236px 0 0;
+        padding: 230px 0 0;
     }
 }
 
 @media screen and (max-width: 760px) {
     .profile {
-        padding: 70px 30px 40px
+        padding: 69px 30px 40px
     }
 }

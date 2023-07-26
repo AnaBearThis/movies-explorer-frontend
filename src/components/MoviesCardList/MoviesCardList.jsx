@@ -2,7 +2,7 @@ import MoviesCard from "../MoviesCard/MoviesCard.jsx";
 
 function MoviesCardList() {
     return (
-        <section className="moviesCardList">
+        <section className="movies-card-list">
             <MoviesCard />
             <MoviesCard />
             <MoviesCard />

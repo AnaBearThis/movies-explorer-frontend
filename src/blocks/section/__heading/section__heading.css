@@ -1,8 +1,9 @@
 .section__heading {
     margin: 0;
-    padding: 0 0 23px;
+    padding: 0 0 25px;
     font-size: 22px;
     font-weight: 400;
+    letter-spacing: -1px;
     border-bottom: 1px solid;
 }
 

@@ -1,8 +1,8 @@
 function FilterCheckbox() {
     return (
-        <div className='filterCheckbox'>
-            <input className='searchForm__check' type='checkbox' id='short' value='short films'/>
-            <label className='searchForm__shortLabel' for='short'>Короткометражки</label>
+        <div className='filter-checkbox'>
+            <input className='search-form__check' type='checkbox' id='short' value='short films'/>
+            <label className='search-form__shortLabel' htmlFor='short'>Короткометражки</label>
         </div>
     )
 }

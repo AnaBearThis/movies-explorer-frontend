@@ -1,0 +1,17 @@
+.profile__button-container {
+    margin: 207px 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+    .profile__button-container {
+        margin: 194px 0 269px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .profile__button-container {
+        margin: 363px 0 0;
+    }
+}

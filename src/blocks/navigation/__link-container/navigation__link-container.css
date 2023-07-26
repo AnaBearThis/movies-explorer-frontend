@@ -1,0 +1,13 @@
+.navigation__link-container {
+    margin-top: 105.44px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+    align-items: center;
+}
+
+@media screen and (max-width: 760px) {
+    .navigation__link-container {
+        margin-top: 99.44px;
+    }
+}

@@ -2,10 +2,18 @@ import SavedMovieCard from "../SavedMovieCard/SavedMovieCard.jsx";
 
 function SavedMoviesList() {
     return (
-        <section className="savedMoviesList">
-            <SavedMovieCard />
-            <SavedMovieCard />
-            <SavedMovieCard />
+        <section>
+            <ul className="saved-movies-list">
+                <li>
+                    <SavedMovieCard />
+                </li>
+                <li>
+                    <SavedMovieCard />
+                </li>
+                <li>
+                    <SavedMovieCard />
+                </li>
+            </ul>
         </section>
     )
 };

@@ -5,12 +5,12 @@ import SavedMoviesList from "../SavedMoviesList/SavedMoviesList.jsx";
 
 function SavedMovies() {
     return (
-        <div className="savedMovies">
+        <main className="saved-movies">
             <Header />
             <SearchForm />
             <SavedMoviesList />
             <Footer />
-        </div>
+        </main>
     )
 }
 

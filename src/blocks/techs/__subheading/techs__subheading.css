@@ -5,6 +5,7 @@
     font-size: 50px;
     line-height: 58px;
     font-weight: 400;
+    letter-spacing: -1.8px;
 }
 
 @media screen and (max-width: 900px) {
@@ -15,7 +16,7 @@
 
 @media screen and (max-width: 760px) {
     .techs__subheading {
-        padding-top: 60px;
+        padding-top: 62px;
         font-size: 30px;
         line-height: 36px;
     }

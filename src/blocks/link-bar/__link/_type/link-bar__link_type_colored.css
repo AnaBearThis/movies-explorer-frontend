@@ -1,0 +1,12 @@
+.link-bar__link_type_colored {
+    padding: 8px 20px;
+    background-color: #3456F3;
+    border-radius: 3px;
+    color: #fff;
+}
+
+@media screen and (max-width: 760px) {
+    .link-bar__link_type_colored {
+        padding: 7px 12px;
+    }
+}

@@ -1,0 +1,14 @@
+.profile__log-out {
+    margin: 16px auto 0;
+    border: none;
+    background-color: transparent;
+    font-size: 13px;
+    font-weight: 400;
+    color: #EE3465;
+    transition: opacity 0.6s;
+}
+
+.profile__log-out:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}

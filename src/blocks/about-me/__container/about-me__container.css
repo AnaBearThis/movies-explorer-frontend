@@ -1,0 +1,20 @@
+.about-me__container {
+    padding-top: 68px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+    .about-me__container {
+        padding-top: 65px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .about-me__container {
+        padding-top: 60px;
+        flex-direction: column-reverse;
+        row-gap: 40px;
+        align-items: center;
+    }
+}

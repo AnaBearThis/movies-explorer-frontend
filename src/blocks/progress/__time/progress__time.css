@@ -7,6 +7,12 @@
     font-weight: 400;
 }
 
+@media screen and (max-width: 900px) {
+    .progress__time {
+        padding: 10px;
+    }
+}
+
 @media screen and (max-width: 760px) {
     .progress__time {
         margin: 0 0 10px;

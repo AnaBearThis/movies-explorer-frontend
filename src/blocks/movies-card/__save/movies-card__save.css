@@ -1,0 +1,32 @@
+.movies-card__save {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.movies-card__save+label:hover::before {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+.movies-card__save+label {
+    margin: 0 auto;
+    display: inline-flex;
+    user-select: none;
+}
+
+.movies-card__save+label::before {
+    content: '';
+    display: inline-block;
+    width: 100px;
+    height: 29px;
+    background-image: url(../../../images/save.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    transition: opacity 0.6s;
+}
+
+.movies-card__save:checked+label::before {
+    background-image: url(../../../images/saved.png);
+}

@@ -1,8 +1,8 @@
 .movies-card {
-    padding: 18px 0;
+    padding: 18px 0 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    row-gap: 18px;
     background-color: #FFF;
     border-radius: 6px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
@@ -10,6 +10,7 @@
 
 @media screen and (max-width: 760px) {
     .movies-card {
-        padding: 14px 0;
+        padding: 14px 0 0;
+        row-gap: 14px;
     }
 }

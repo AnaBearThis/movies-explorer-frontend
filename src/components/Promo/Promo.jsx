@@ -1,9 +1,10 @@
+import Header from "../Header/Header.jsx";
 import NavTab from "../NavTab/NavTab.jsx";
 
-function Promo() {
+function Promo(props) {
     return (
         <section className="promo">
-            <NavTab />
+            {props.isLoggedIn ? <Header /> : <NavTab />}
             <h1 className="promo__heading">Учебный проект студента факультета Веб-разработки.</h1>
         </section>
     )

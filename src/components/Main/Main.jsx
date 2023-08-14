@@ -6,10 +6,10 @@ import AboutMe from '../AboutMe/AboutMe.jsx';
 import Portfolio from '../Portfolio/Portfolio.jsx';
 import Footer from '../Footer/Footer.jsx';
 
-function Main() {
+function Main(props) {
     return (
         <main className='main'>
-            <Promo />
+            <Promo isLoggedIn={props.loggedIn}/>
             <AboutProject />
             <Techs />
             <AboutMe />

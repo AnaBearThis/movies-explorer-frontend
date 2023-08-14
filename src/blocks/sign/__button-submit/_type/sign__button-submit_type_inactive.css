@@ -1,0 +1,8 @@
+.sign__button-submit_type_inactive {
+    background-color: #DDDEE3;
+}
+
+.sign__button-submit_type_inactive:hover {
+    cursor: default;
+    opacity: 1;
+}

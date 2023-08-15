@@ -10,7 +10,7 @@ function MoviesCard(props) {
             let btnSave = card.querySelector(".movies-card__save");
             console.log(btnSave)
             btnSave.classList.add('movies-card__save_type_saved')
-        } else if (props.savedFilms.find(c => c.movieId === props.card.id) === undefined && window.location.href === 'http://localhost:3001/movies'){
+        } else if (props.savedFilms.find(c => c.movieId === props.card.id) === undefined && (window.location.href === 'http://localhost:3001/movies' || 'https://movies-ana-bear.nomoredomains.xyz/movies')){
             let card = document.getElementById(props.card.id);
             console.log(card)
             let btnSave = card.querySelector(".movies-card__save");

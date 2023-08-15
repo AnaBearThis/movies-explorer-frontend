@@ -25,9 +25,9 @@ function SearchForm(props) {
   function handleSubmit(e) {
     console.log(props.cards);
     e.preventDefault();
-    if (window.location.href === "http://localhost:3001/movies") {
+    if (window.location.href === "http://localhost:3001/movies" || 'https://movies-ana-bear.nomoredomains.xyz/movies') {
       props.setCards([]);
-    } else if (window.location.href === "http://localhost:3001/saved-movies") {
+    } else if (window.location.href === "http://localhost:3001/saved-movies" || 'https://movies-ana-bear.nomoredomains.xyz/saved-movies') {
       props.setFoundSavedFilms([]);
     }
     setLoading(true);
@@ -40,7 +40,7 @@ function SearchForm(props) {
       setLoading(false);
       setError(true);
     } else {
-      if (window.location.href === "http://localhost:3001/movies") {
+      if (window.location.href === "http://localhost:3001/movies" || 'https://movies-ana-bear.nomoredomains.xyz/movies') {
         localStorage.setItem("filmName", filmName);
         moviesApi
           .getCards()
@@ -56,11 +56,11 @@ function SearchForm(props) {
             if (foundFilms.length === 0) {
               setTimeout(setNotFound, 3000, true);
             } else {
-              if (window.location.href === "http://localhost:3001/movies") {
+              if (window.location.href === "http://localhost:3001/movies" || 'https://movies-ana-bear.nomoredomains.xyz/movies') {
                 setTimeout(props.setCards, 3000, foundFilms);
                 localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
               } else if (
-                window.location.href === "http://localhost:3001/saved-movies"
+                window.location.href === "http://localhost:3001/saved-movies" || 'https://movies-ana-bear.nomoredomains.xyz/saved-movies'
               ) {
                 setTimeout(props.setFoundSavedFilms, 3000, foundFilms);
               }
@@ -76,7 +76,7 @@ function SearchForm(props) {
             props.setCards([]);
           });
       } else if (
-        window.location.href === "http://localhost:3001/saved-movies"
+        window.location.href === "http://localhost:3001/saved-movies" || 'https://movies-ana-bear.nomoredomains.xyz/movies'
       ) {
         foundFilms = props.savedFilms.filter((card) =>
           card.nameRU.toLowerCase().includes(filmName.toLowerCase())
@@ -115,7 +115,7 @@ function SearchForm(props) {
             type="string"
             name="filmName"
             placeholder={
-              window.location.href === "http://localhost:3001/movies"
+              window.location.href === "http://localhost:3001/movies" || 'https://movies-ana-bear.nomoredomains.xyz/movies'
                 ? localStorage.filmName || "Фильм"
                 : "Фильм"
             }

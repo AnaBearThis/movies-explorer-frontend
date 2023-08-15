@@ -9,7 +9,7 @@ function SavedMovies(props) {
     const [isOnSavedMoviesPage, setSavedMoviesPage] = React.useState(false);
 
     React.useEffect(() => {
-        if (window.location.href === 'http://localhost:3001/movies' || window.location.href === 'movies-ana-bear.nomoredomains.xyz/movies') {
+        if (window.location.href === 'http://localhost:3001/movies' || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/movies') {
             setMoviesPage(true)
         } else {
             setMoviesPage(false)
@@ -17,7 +17,7 @@ function SavedMovies(props) {
       }, [])
     
       React.useEffect(() => {
-          if (window.location.href === 'http://localhost:3001/saved-movies' || window.location.href === 'movies-ana-bear.nomoredomains.xyz/saved-movies') {
+          if (window.location.href === 'http://localhost:3001/saved-movies' || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/saved-movies') {
               setSavedMoviesPage(true)
           } else {
               setSavedMoviesPage(false)

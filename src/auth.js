@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://movies-ana-bear.nomoredomains.xyz';
+export const BASE_URL = 'https://api.movies-ana-bear.nomoredomains.xyz';
 
 function checkResponse(res) {
   if (res.ok) {

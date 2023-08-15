@@ -8,7 +8,7 @@ const MoviesCardList = React.memo((props) => {
     const [cardsToShow, setCardsToShow] = React.useState(12)
     const [anotherRow, setAnotherRow] = React.useState(3)
 
-    const shortBtn = document.getElementsByClassName('search-form__check')[0];
+    // const shortBtn = document.getElementsByClassName('search-form__check')[0];
 
     React.useEffect(() => {
         if (window.innerWidth > 900) {
@@ -39,6 +39,7 @@ const MoviesCardList = React.memo((props) => {
     React.useEffect(() => {
         props.setCards(storedFilms)
         if (localStorage.isShort === 'true') {
+            const shortBtn = document.querySelector('.search-form__check');
             props.setShort(true)
             shortBtn.classList.add('search-form__check_type_active');
             setShownCards(storedFilms.filter((card) => (card.duration <= 40)).slice(0, cardsToShow))
@@ -50,7 +51,7 @@ const MoviesCardList = React.memo((props) => {
     React.useEffect(() => {
         setShownCards(props.cards.slice(0, cardsToShow))
         if (props.isShort === true) {
-            setShownCards(props.cards.filter((card) => (card.duration <= 30)).slice(0, cardsToShow))
+            setShownCards(props.cards.filter((card) => (card.duration <= 40)).slice(0, cardsToShow))
         }
     }, [props.cards, props.isShort, cardsToShow])
 

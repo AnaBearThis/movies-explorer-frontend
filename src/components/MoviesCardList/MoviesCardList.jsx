@@ -8,8 +8,8 @@ const MoviesCardList = React.memo((props) => {
   const [shownCards, setShownCards] = React.useState([]);
   const [cardsToShow, setCardsToShow] = React.useState(12);
   const [anotherRow, setAnotherRow] = React.useState(3);
-
-  localStorage.setItem("shortFilms", '');
+  const [shortFilms, setShortFilms] = React.useState([]);
+  const [thereIsMore, setThereIsMore] = React.useState(false);
 
   React.useEffect(() => {
     if (window.innerWidth > 900) {
@@ -46,14 +46,7 @@ const MoviesCardList = React.memo((props) => {
       setShownCards(
         storedFilms.filter((card) => card.duration <= 40).slice(0, cardsToShow)
       );
-      localStorage.setItem(
-        "shortFilms",
-        JSON.stringify(
-          storedFilms
-            .filter((card) => card.duration <= 40)
-            .slice(0, cardsToShow)
-        )
-      );
+      setShortFilms(storedFilms.filter((card) => card.duration <= 40).slice(0, cardsToShow))
     } else if (localStorage.isShort === "false") {
       setShownCards(storedFilms.slice(0, cardsToShow));
     }
@@ -76,25 +69,23 @@ const MoviesCardList = React.memo((props) => {
     }
   };
 
-  function thereIsMore() {
+  React.useEffect(() => {
     if (
       shownCards.length === Array.from(props.cards).length ||
-      shownCards.length === storedFilms.length ||
-      shownCards.length === JSON.parse(localStorage.shortFilms).length
+      shownCards.length === storedFilms.length || 
+      shownCards.length === shortFilms.length
     ) {
-      return false;
+      setThereIsMore(false)
     } else if (
       props.cards.length > shownCards.length ||
       storedFilms.length > shownCards.length ||
-      JSON.parse(localStorage.shortFilms).length > shownCards.length
+      shortFilms.length > shownCards.length
     ) {
-      return true;
+      setThereIsMore(true)
     } else {
-      return false;
+      setThereIsMore(false)
     }
-  }
-
-  thereIsMore();
+  }, [props.cards, shortFilms.length, storedFilms.length, shownCards.length])
 
   function showMore() {
     const toBeShownCards = Math.min(
@@ -162,7 +153,7 @@ const MoviesCardList = React.memo((props) => {
             />
           ))}
         </section>
-        {thereIsMore() === true && <More onClick={showMore} />}
+        {thereIsMore === true && <More onClick={showMore} />}
         {(props.isSaveFail === true || props.isDeleteFail === true) && (
           <MoviesCardPopup
             cardToolText={

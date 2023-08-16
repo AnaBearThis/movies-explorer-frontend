@@ -36,8 +36,12 @@ function App() {
   const [isDeleteFail, setDeleteFail] = React.useState(false);
   const [cardDeleteToolText, setCardDeleteToolText] = React.useState("");
   let storedFilms;
+  localStorage.setItem("shortFilms", "");
   const navigate = useNavigate();
   const location = useLocation();
+
+  console.log(localStorage.foundFilms)
+
 
   React.useEffect(() => {
     mainApi

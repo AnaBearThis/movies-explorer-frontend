@@ -57,8 +57,6 @@ const MoviesCardList = React.memo((props) => {
     }
   }, []);
 
-  console.log(JSON.parse(localStorage.shortFilms));
-
   React.useEffect(() => {
     setShownCards(props.cards.slice(0, cardsToShow));
     if (props.isShort === true) {

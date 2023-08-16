@@ -1,5 +1,11 @@
 .portfolio__projects {
     margin: 0;
-    padding: 0;
+    padding: 0 70px;
     list-style-type: none;
+}
+
+@media screen and (max-width: 900px) {
+    .portfolio__projects {
+        padding: 0;
+    }
 }

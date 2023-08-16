@@ -5,6 +5,8 @@
     font-weight: 400;
     text-decoration: none;
     color: #3456F3;
+    border: none;
+    background-color: transparent;
     transition: opacity 0.6s;
 }
 

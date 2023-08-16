@@ -1,12 +1,12 @@
 .description {
-    padding: 70px 0 110px;
+    padding: 70px 70px 110px;
     display: flex;
     column-gap: 40px;
 }
 
 @media screen and (max-width: 900px) {
     .description {
-        padding-bottom: 93px;
+        padding: 70px 0 93px;
         column-gap: 37px;
     }
 }

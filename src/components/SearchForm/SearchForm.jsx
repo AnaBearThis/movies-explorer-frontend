@@ -1,8 +1,8 @@
-import React from 'react';
-import searchTransp from '../../images/iconsearchTransparent.svg';
-import moviesApi from '../../utils/MoviesApi.js';
-import FilterCheckbox from '../FilterCheckbox/FilterCheckbox.jsx';
-import Preloader from '../Preloader/Preloader.jsx';
+import React from "react";
+import searchTransp from "../../images/iconsearchTransparent.svg";
+import moviesApi from "../../utils/MoviesApi.js";
+import FilterCheckbox from "../FilterCheckbox/FilterCheckbox.jsx";
+import Preloader from "../Preloader/Preloader.jsx";
 
 function SearchForm(props) {
   const [filmName, setFilmName] = React.useState("");
@@ -10,7 +10,7 @@ function SearchForm(props) {
   const [isError, setError] = React.useState(false);
   const [isNotFound, setNotFound] = React.useState(false);
   const [isFail, setFail] = React.useState(false);
-  const [toolTip, setToolTip] = React.useState('');
+  const [toolTip, setToolTip] = React.useState("");
 
   const shortBtn = document.getElementsByClassName("search-form__check")[0];
 
@@ -18,17 +18,13 @@ function SearchForm(props) {
     setFilmName(e.target.value);
   }
 
-  React.useEffect(() => {
-    props.setFoundSavedFilms(props.savedFilms);
-  }, [props]);
-
   function handleSubmit(e) {
     console.log(props.cards);
     e.preventDefault();
-    if (window.location.href === "http://localhost:3001/movies" || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/movies') {
+    if (props.isOnMoviesPage === true) {
       props.setCards([]);
-    } else if (window.location.href === "http://localhost:3001/saved-movies" || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/saved-movies') {
-      props.setFoundSavedFilms([]);
+    } else if (props.isOnSavedMoviesPage === true) {
+      props.setSavedFilms([]);
     }
     setLoading(true);
     setNotFound(false);
@@ -40,30 +36,27 @@ function SearchForm(props) {
       setLoading(false);
       setError(true);
     } else {
-      if (window.location.href === "http://localhost:3001/movies" || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/movies') {
+      if (props.isOnMoviesPage === true) {
         localStorage.setItem("filmName", filmName);
         moviesApi
           .getCards()
           .then((data) => {
             setTimeout(setLoading, 3000, false);
             console.log(data);
-            foundFilms = data.filter((card) =>
-              card.nameRU.toLowerCase().includes(filmName.toLowerCase()) || card.nameEN.toLowerCase().includes(filmName.toLowerCase())
+            foundFilms = data.filter(
+              (card) =>
+                card.nameRU.toLowerCase().includes(filmName.toLowerCase()) ||
+                card.nameEN.toLowerCase().includes(filmName.toLowerCase())
             );
             console.log(foundFilms);
           })
           .then(() => {
             if (foundFilms.length === 0) {
               setTimeout(setNotFound, 3000, true);
+              localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
             } else {
-              if (window.location.href === "http://localhost:3001/movies" || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/movies') {
-                setTimeout(props.setCards, 3000, foundFilms);
-                localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
-              } else if (
-                window.location.href === "http://localhost:3001/saved-movies" || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/saved-movies'
-              ) {
-                setTimeout(props.setFoundSavedFilms, 3000, foundFilms);
-              }
+              setTimeout(props.setCards, 3000, foundFilms);
+              localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
             }
             console.log(isNotFound);
             console.log(localStorage.foundFilms);
@@ -72,15 +65,26 @@ function SearchForm(props) {
             console.log(`Error ${err}`);
             setTimeout(setLoading, 3000, false);
             setTimeout(setFail, 3000, true);
-            setTimeout(setToolTip, 3000, 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз')
+            setTimeout(
+              setToolTip,
+              3000,
+              "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+            );
             props.setCards([]);
           });
-      } else if (
-        window.location.href === "http://localhost:3001/saved-movies" || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/movies'
-      ) {
-        foundFilms = props.savedFilms.filter((card) =>
-          card.nameRU.toLowerCase().includes(filmName.toLowerCase())
+      } else if (props.isOnSavedMoviesPage === true) {
+        setTimeout(setLoading, 3000, false);
+        foundFilms = props.savedFilms.filter(
+          (card) =>
+            card.nameRU.toLowerCase().includes(filmName.toLowerCase()) ||
+            card.nameEN.toLowerCase().includes(filmName.toLowerCase())
         );
+        console.log(foundFilms);
+        if (foundFilms.length === 0) {
+          setTimeout(setNotFound, 3000, true);
+        } else {
+          setTimeout(props.setSavedFilms, 3000, foundFilms);
+        }
       }
     }
   }
@@ -115,7 +119,7 @@ function SearchForm(props) {
             type="string"
             name="filmName"
             placeholder={
-              window.location.href === "http://localhost:3001/movies" || window.location.href === 'https://movies-ana-bear.nomoredomains.xyz/movies'
+              props.isOnMoviesPage === true
                 ? localStorage.filmName || "Фильм"
                 : "Фильм"
             }
@@ -136,7 +140,11 @@ function SearchForm(props) {
           </span>
         </div>
         <FilterCheckbox onClick={handleShort} />
-        <p className={`info-tool-tip ${props.isFail && 'info-tool-tip_type_visible'}`}>{props.toolText}</p>
+        <p
+          className={`info-tool-tip ${isFail && "info-tool-tip_type_visible"}`}
+        >
+          {toolTip}
+        </p>
         {isLoading && <Preloader />}
         {isNotFound && (
           <p className="search-form__not-found">Ничего не найдено</p>
@@ -144,6 +152,6 @@ function SearchForm(props) {
       </form>
     </section>
   );
-};
+}
 
 export default SearchForm;

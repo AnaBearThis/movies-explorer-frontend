@@ -1,4 +1,4 @@
-/* .header {
+.header__content {
     margin: 0;
     padding: 18px 70px;
     display: flex;
@@ -7,14 +7,14 @@
 }
 
 @media screen and (max-width: 900px) {
-    .header {
+    .header__content {
         padding: 18px 30px;
         align-items: start;
     }
 }
 
 @media screen and (max-width: 760px) {
-    .header {
+    .header__content {
         padding: 18px 14px;
     }
-} */
+}

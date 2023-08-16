@@ -9,6 +9,8 @@ const MoviesCardList = React.memo((props) => {
   const [cardsToShow, setCardsToShow] = React.useState(12);
   const [anotherRow, setAnotherRow] = React.useState(3);
 
+  localStorage.setItem("shortFilms", '');
+
   React.useEffect(() => {
     if (window.innerWidth > 900) {
       setCardsToShow(12);

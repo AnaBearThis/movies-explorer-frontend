@@ -94,4 +94,6 @@ const moviesApi = new MainApi({
     }
 })
 
+// url: 'https://api.movies-ana-bear.nomoredomains.xyz',
+
 export default moviesApi;

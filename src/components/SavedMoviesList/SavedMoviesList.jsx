@@ -4,13 +4,14 @@ import MoviesCardPopup from "../MoviesCardPopup/MoviesCardPopup.jsx";
 
 function SavedMoviesList(props) {
   const [shownCards, setShownCards] = React.useState([]);
+  console.log(props.foundSavedFilms)
 
   React.useEffect(() => {
-    setShownCards(props.savedFilms);
+    setShownCards(props.foundSavedFilms);
     if (props.isShort === true) {
-      setShownCards(props.savedFilms.filter((card) => card.duration <= 40));
+      setShownCards(props.foundSavedFilms.filter((card) => card.duration <= 40));
     }
-  }, [props.isShort, props.savedFilms]);
+  }, [props.isShort, props.foundSavedFilms]);
 
   return (
     <section>

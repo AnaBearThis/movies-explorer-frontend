@@ -1,5 +1,7 @@
 export const BASE_URL = 'https://api.movies-ana-bear.nomoredomains.xyz';
 
+// https://api.movies-ana-bear.nomoredomains.xyz
+
 function checkResponse(res) {
   if (res.ok) {
     return res.json();

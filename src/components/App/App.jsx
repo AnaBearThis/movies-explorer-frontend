@@ -16,6 +16,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 function App() {
   const [cards, setCards] = React.useState([]);
   const [savedFilms, setSavedFilms] = React.useState([]);
+  const [foundSavedFilms, setFoundSavedFilms] = React.useState([]);
   const [isLoginSuccess, setLoginSuccess] = React.useState(false);
   const [isLoginFail, setLoginFail] = React.useState(false);
   const [loginToolText, setLoginToolText] = React.useState("");
@@ -27,35 +28,15 @@ function App() {
   const [updToolText, setUpdToolText] = React.useState("");
   const [currentUser, setCurrentUser] = React.useState({});
   const [isLoggedIn, setLoggedIn] = React.useState(false);
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] =
-    React.useState(false);
+  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = React.useState(false);
   const [isSaveSuccess, setSaveSuccess] = React.useState(false);
   const [isSaveFail, setSaveFail] = React.useState(false);
   const [cardToolText, setCardToolText] = React.useState("");
   const [isDeleteSuccess, setDeleteSuccess] = React.useState(false);
   const [isDeleteFail, setDeleteFail] = React.useState(false);
   const [cardDeleteToolText, setCardDeleteToolText] = React.useState("");
-  let storedFilms;
-  localStorage.setItem("shortFilms", "");
   const navigate = useNavigate();
   const location = useLocation();
-
-  console.log(localStorage.foundFilms)
-
-
-  React.useEffect(() => {
-    mainApi
-      .getFilms()
-      .then((films) => {
-        console.log(films.data);
-        setSavedFilms(films.data);
-      })
-      .catch((err) => {
-        console.log(`Error ${err}`);
-      });
-  }, []);
-
-  console.log(savedFilms);
 
   React.useEffect(() => {
     function handleUserInfo() {
@@ -70,6 +51,19 @@ function App() {
     }
     handleUserInfo();
   }, []);
+
+  React.useEffect(() => {
+    mainApi
+      .getFilms()
+      .then((films) => {
+        setSavedFilms(
+          films.data.filter((card) => card.owner === currentUser._id)
+        );
+      })
+      .catch((err) => {
+        console.log(`Error ${err}`);
+      });
+  }, [currentUser._id]);
 
   function handleRegister(name, email, password) {
     console.log(isRegSuccess);
@@ -127,6 +121,7 @@ function App() {
           setLoggedIn(true);
           setLoginSuccess(true);
           setLoginToolText("Авторизация прошла успешно!");
+          setTimeout(setLoginToolText, 3000, "");
           setTimeout(() => {
             navigate("/movies", { replace: true });
           }, 3000);
@@ -205,6 +200,7 @@ function App() {
         console.log(res);
         setLoggedIn(false);
         localStorage.setItem("filmName", "");
+        localStorage.setItem("initialFilms", "");
         localStorage.setItem("foundFilms", "");
         localStorage.setItem("isShort", false);
         navigate("/", { replace: true });
@@ -215,6 +211,7 @@ function App() {
   }
 
   function handleCardSave(card) {
+    console.log("save");
     mainApi
       .saveFilm(card)
       .then((res) => {
@@ -235,7 +232,6 @@ function App() {
   }
 
   function handleCardDelete(card) {
-    storedFilms = JSON.parse(localStorage.foundFilms);
     console.log(card);
     const cardToDelete = savedFilms.find((c) => c.movieId === card.id);
     if (typeof card.id === "number") {
@@ -247,14 +243,6 @@ function App() {
           setSavedFilms((savedFilms) =>
             savedFilms.filter((c) => c.movieId !== card.id)
           );
-          storedFilms = storedFilms.map((c) => {
-            const newCard = { ...card, saved: "no" };
-            if (c.id === card.id) {
-              return newCard;
-            } else {
-              return c;
-            }
-          });
         })
         .catch((err) => {
           setDeleteFail(true);
@@ -323,6 +311,8 @@ function App() {
                 loggedIn={isLoggedIn}
                 savedFilms={savedFilms}
                 setSavedFilms={setSavedFilms}
+                foundSavedFilms={foundSavedFilms}
+                setFoundSavedFilms={setFoundSavedFilms}
                 onCardDelete={handleCardDelete}
                 isDeleteSuccess={isDeleteSuccess}
                 isDeleteFail={isDeleteFail}

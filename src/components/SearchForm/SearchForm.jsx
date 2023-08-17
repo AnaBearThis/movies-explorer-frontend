@@ -17,6 +17,7 @@ function SearchForm(props) {
   function handleFilmNameChange(e) {
     setFilmName(e.target.value);
   }
+  console.log(localStorage.initialFilms === '')
 
   function handleSubmit(e) {
     console.log(props.cards);
@@ -24,7 +25,7 @@ function SearchForm(props) {
     if (props.isOnMoviesPage === true) {
       props.setCards([]);
     } else if (props.isOnSavedMoviesPage === true) {
-      props.setSavedFilms([]);
+      props.setFoundSavedFilms([]);
     }
     setLoading(true);
     setNotFound(false);
@@ -38,40 +39,56 @@ function SearchForm(props) {
     } else {
       if (props.isOnMoviesPage === true) {
         localStorage.setItem("filmName", filmName);
-        moviesApi
-          .getCards()
-          .then((data) => {
-            setTimeout(setLoading, 3000, false);
-            console.log(data);
-            foundFilms = data.filter(
-              (card) =>
-                card.nameRU.toLowerCase().includes(filmName.toLowerCase()) ||
-                card.nameEN.toLowerCase().includes(filmName.toLowerCase())
-            );
-            console.log(foundFilms);
-          })
-          .then(() => {
-            if (foundFilms.length === 0) {
-              setTimeout(setNotFound, 3000, true);
-              localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
-            } else {
-              setTimeout(props.setCards, 3000, foundFilms);
-              localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
-            }
-            console.log(isNotFound);
-            console.log(localStorage.foundFilms);
-          })
-          .catch((err) => {
-            console.log(`Error ${err}`);
-            setTimeout(setLoading, 3000, false);
-            setTimeout(setFail, 3000, true);
-            setTimeout(
-              setToolTip,
-              3000,
-              "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
-            );
-            props.setCards([]);
-          });
+        if (localStorage.initialFilms === '') {
+          moviesApi
+            .getCards()
+            .then((data) => {
+              setTimeout(setLoading, 3000, false);
+              console.log(data);
+              localStorage.setItem('initialFilms', JSON.stringify(data))
+              foundFilms = data.filter(
+                (card) =>
+                  card.nameRU.toLowerCase().includes(filmName.toLowerCase()) ||
+                  card.nameEN.toLowerCase().includes(filmName.toLowerCase())
+              );
+              console.log(foundFilms);
+            })
+            .then(() => {
+              if (foundFilms.length === 0) {
+                setTimeout(setNotFound, 3000, true);
+                localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
+              } else {
+                setTimeout(props.setCards, 3000, foundFilms);
+                localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
+              }
+            })
+            .catch((err) => {
+              console.log(`Error ${err}`);
+              setTimeout(setLoading, 3000, false);
+              setTimeout(setFail, 3000, true);
+              setTimeout(
+                setToolTip,
+                3000,
+                "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+              );
+              props.setCards([]);
+            });
+        } else {
+          const initialFilms = JSON.parse(localStorage.initialFilms);
+          setTimeout(setLoading, 3000, false);
+          foundFilms = initialFilms.filter(
+            (card) =>
+              card.nameRU.toLowerCase().includes(filmName.toLowerCase()) ||
+              card.nameEN.toLowerCase().includes(filmName.toLowerCase())
+          );
+          if (foundFilms.length === 0) {
+            setTimeout(setNotFound, 3000, true);
+            localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
+          } else {
+            setTimeout(props.setCards, 3000, foundFilms);
+            localStorage.setItem("foundFilms", JSON.stringify(foundFilms));
+          }
+        }
       } else if (props.isOnSavedMoviesPage === true) {
         setTimeout(setLoading, 3000, false);
         foundFilms = props.savedFilms.filter(
@@ -83,7 +100,7 @@ function SearchForm(props) {
         if (foundFilms.length === 0) {
           setTimeout(setNotFound, 3000, true);
         } else {
-          setTimeout(props.setSavedFilms, 3000, foundFilms);
+          setTimeout(props.setFoundSavedFilms, 3000, foundFilms);
         }
       }
     }

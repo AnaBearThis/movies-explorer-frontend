@@ -1,7 +1,6 @@
 import React from "react";
 
 function MoviesCard(props) {
-  const isSaved = props.card.saved === "yes";
 
   React.useEffect(() => {
     if (
@@ -24,7 +23,7 @@ function MoviesCard(props) {
       console.log(btnSave);
       btnSave.classList.remove("movies-card__save_type_saved");
     }
-  }, []);
+  }, [props.savedFilms]);
 
   console.log(props.card);
 
@@ -44,14 +43,8 @@ function MoviesCard(props) {
     let btnSave = card.getElementsByClassName("movies-card__save")[0];
     if (btnSave.classList.contains("movies-card__save_type_saved")) {
       props.onDelete(props.card);
-      if (props.isDeleteSuccess === true) {
-        btnSave.classList.remove("movies-card__save_type_saved");
-      }
     } else {
       props.onSave(props.card);
-      if (props.isSaveSuccess === true) {
-        btnSave.classList.add("movies-card__save_type_saved");
-      }
     }
   }
 
@@ -81,9 +74,7 @@ function MoviesCard(props) {
       />
       {props.isOnMoviesPage === true && (
         <button
-          className={`movies-card__save ${
-            isSaved && "movies-card__save_type_saved"
-          }`}
+          className='movies-card__save'
           type="buttton"
           value="save"
           id="save"

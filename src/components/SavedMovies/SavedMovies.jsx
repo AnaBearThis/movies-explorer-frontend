@@ -10,6 +10,12 @@ function SavedMovies(props) {
   const [isOnSavedMoviesPage, setSavedMoviesPage] = React.useState(false);
 
   React.useEffect(() => {
+      if (isOnSavedMoviesPage === true) {
+        props.setFoundSavedFilms(props.savedFilms)
+      }
+  }, [props.savedFilms, isOnSavedMoviesPage])
+
+  React.useEffect(() => {
     if (
       window.location.href === "http://localhost:3001/movies" ||
       window.location.href ===
@@ -47,12 +53,16 @@ function SavedMovies(props) {
           setShort={setShort}
           savedFilms={props.savedFilms}
           setSavedFilms={props.setSavedFilms}
+          foundSavedFilms={props.foundSavedFilms}
+          setFoundSavedFilms={props.setFoundSavedFilms}
         />
         <SavedMoviesList
           isOnMoviesPage={isOnMoviesPage}
           isOnSavedMoviesPage={isOnSavedMoviesPage}
           savedFilms={props.savedFilms}
           setSavedFilms={props.setSavedFilms}
+          foundSavedFilms={props.foundSavedFilms}
+          setFoundSavedFilms={props.setFoundSavedFilms}
           isShort={isShort}
           setShort={setShort}
           onDelete={props.onCardDelete}

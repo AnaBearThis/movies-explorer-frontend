@@ -1,34 +1,32 @@
 import React from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
-import EmailValidator from "email-validator";
 
 function EditProfilePopup(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
   const [values, setValues] = React.useState({});
   const [errors, setErrors] = React.useState({});
   const [isValid, setIsValid] = React.useState(false);
 
   React.useEffect(() => {
-    const btnSubmit = document.querySelector(".profile__button-submit");
-    if (isValid === false) {
-      btnSubmit.setAttribute("disabled", true);
-    } else {
-      btnSubmit.removeAttribute("disabled");
-    }
-  });
+    setValues({
+      "input-name": currentUser.name,
+      "input-email": currentUser.email,
+    });
+  }, [currentUser]);
 
   React.useEffect(() => {
-    setName(currentUser.name);
-    setEmail(currentUser.email);
-  }, [currentUser]);
+    const noValueChanged =
+      values["input-name"] === currentUser.name &&
+      values["input-email"] === currentUser.email;
+    if (noValueChanged === true) {
+      setIsValid(false);
+    }
+  }, [values, currentUser]);
 
   const handleChange = (event) => {
     const target = event.target;
     const id = target.id;
     const value = target.value;
-    console.log(EmailValidator.validate(value));
     setValues({ ...values, [id]: value });
     setErrors({ ...errors, [`${id}-error`]: target.validationMessage });
     const inputName = document.getElementById("input-name");
@@ -39,36 +37,19 @@ function EditProfilePopup(props) {
       inputName.setCustomValidity(
         "Поле Имя должно содержать только латиницу, кириллицу, пробел или дефис."
       );
-    } else if (
-      inputName.value === currentUser.name &&
-      inputEmail.value === currentUser.email
-    ) {
-      inputName.setCustomValidity(
-        "Нужно внести изменения хотябы в одно из полей."
-      );
-    } else if (
-      inputName.validity.patternMismatch === false &&
-      inputName !== currentUser.name
-    ) {
-      console.log(inputName.validity);
+    } else if (inputName.validity.patternMismatch === false) {
       inputName.setCustomValidity("");
       setErrors({ ...errors, [`${id}-error`]: target.validationMessage });
     }
 
-    if (EmailValidator.validate(value) === false) {
-      console.log(inputName.validity);
-      inputEmail.setCustomValidity(
-        "Поле E-mail должно содержать действительный e-mail адрес."
-      );
-    } else if (
-      inputEmail.value === currentUser.email &&
-      inputName.value === currentUser.name
-    ) {
-      inputName.setCustomValidity(
-        "Нужно внести изменения хотябы в одно из полей."
-      );
-    } else if (EmailValidator.validate(value) === true) {
-      console.log(inputName.validity);
+    if (inputEmail.validity.patternMismatch === true) {
+      console.log(inputEmail.validity);
+      setErrors({
+        ...errors,
+        [`${id}-error`]:
+          "Поле E-mail должно содержать действительный e-mail адрес.",
+      });
+    } else if (inputEmail.validity.patternMismatch === false) {
       inputEmail.setCustomValidity("");
       setErrors({ ...errors, [`${id}-error`]: target.validationMessage });
     }
@@ -77,6 +58,15 @@ function EditProfilePopup(props) {
   };
 
   console.log(values["input-name"]);
+
+  React.useEffect(() => {
+    const btnSubmit = document.querySelector(".profile__button-submit");
+    if (isValid === false) {
+      btnSubmit.setAttribute("disabled", true);
+    } else {
+      btnSubmit.removeAttribute("disabled");
+    }
+  }, [isValid]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -94,14 +84,8 @@ function EditProfilePopup(props) {
       }`}
     >
       <div className="edit-profile-popup__container">
-        <p className="profile__greeting">Привет, {name}!</p>
-        <form
-          className="profile__formEdit"
-          onSubmit={isValid && handleSubmit}
-          onChange={handleChange}
-          values={values}
-          errors={errors}
-        >
+        <p className="profile__greeting">Привет, {currentUser.name}!</p>
+        <form className="profile__formEdit" onSubmit={isValid && handleSubmit}>
           <div className="profile__container">
             <label className="profile__name" htmlFor="input-name">
               Имя
@@ -114,8 +98,8 @@ function EditProfilePopup(props) {
               id="input-name"
               type="text"
               name="name"
-              placeholder={name}
-              value={values["input-name"] || name}
+              placeholder="имя"
+              value={values["input-name"]}
               required
               minLength="2"
               maxLength="40"
@@ -135,11 +119,13 @@ function EditProfilePopup(props) {
             <input
               className="profile__input-edit"
               onChange={handleChange}
+              pattern="^\S+@\S+\.\S+$"
+              title="Поле E-mail должно содержать действительный e-mail адрес."
               id="input-email"
               type="email"
               name="email"
-              placeholder={email}
-              value={values["input-email"] || email}
+              placeholder="e-mail"
+              value={values["input-email"]}
               required
             />
           </div>

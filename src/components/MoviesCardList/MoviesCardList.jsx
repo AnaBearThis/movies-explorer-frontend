@@ -99,35 +99,6 @@ const MoviesCardList = React.memo((props) => {
     console.log(cardsToShow);
   }
 
-  function handleCardSave(card) {
-    props.onCardSave(card);
-    storedFilms = storedFilms.map((c) => {
-      const newCard = { ...card, saved: "yes" };
-      if (c.id === card.id) {
-        return newCard;
-      } else {
-        return c;
-      }
-    });
-    localStorage.setItem("foundFilms", JSON.stringify(storedFilms));
-    props.setCards(storedFilms);
-  }
-
-  function handleCardDelete(card) {
-    props.onDelete(card);
-    storedFilms = storedFilms.map((c) => {
-      const newCard = { ...card, saved: "no" };
-      console.log(newCard);
-      if (c.id === card.id) {
-        return newCard;
-      } else {
-        return c;
-      }
-    });
-    localStorage.setItem("foundFilms", JSON.stringify(storedFilms));
-    props.setCards(storedFilms);
-  }
-
   if (storedFilms.length === 0 && props.cards.length === 0) {
     return <section className="movies-card-list"></section>;
   } else {
@@ -141,12 +112,12 @@ const MoviesCardList = React.memo((props) => {
               isOnMoviesPage={props.isOnMoviesPage}
               isOnSavedMoviesPage={props.isOnSavedMoviesPage}
               storedFilms={storedFilms}
-              onSave={handleCardSave}
+              onSave={props.onCardSave}
               isSaveSuccess={props.isSaveSuccess}
               isSaveFail={props.isSaveFail}
               cardToolText={props.cardToolText}
               savedFilms={props.savedFilms}
-              onDelete={handleCardDelete}
+              onDelete={props.onDelete}
               isDeleteSuccess={props.isDeleteSuccess}
               isDeleteFail={props.isDeleteFail}
               cardDeleteToolText={props.cardDeleteToolText}

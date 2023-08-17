@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import EmailValidator from "email-validator";
 import logo from "../../images/logo.svg";
 
 function Register(props) {
@@ -30,7 +29,6 @@ function Register(props) {
     const target = event.target;
     const id = target.id;
     const value = target.value;
-    console.log(EmailValidator.validate(value));
     setValues({ ...values, [id]: value });
     setErrors({ ...errors, [`${id}-error`]: target.validationMessage });
     const inputName = document.getElementById("input-name");
@@ -45,12 +43,12 @@ function Register(props) {
       setErrors({ ...errors, [`${id}-error`]: target.validationMessage });
     }
     const inputEmail = document.getElementById("input-email");
-    if (EmailValidator.validate(value) === false) {
+    if (inputEmail.validity.patternMismatch === true) {
       console.log(inputName.validity);
       inputEmail.setCustomValidity(
         "Поле Email должно содержать действительный e-mail адрес."
       );
-    } else if (EmailValidator.validate(value) === true) {
+    } else if (inputEmail.validity.patternMismatch === false) {
       console.log(inputName.validity);
       inputEmail.setCustomValidity("");
       setErrors({ ...errors, [`${id}-error`]: target.validationMessage });
@@ -114,6 +112,8 @@ function Register(props) {
             id="input-email"
             type="email"
             name="email"
+            pattern="^\S+@\S+\.\S+$"
+            title="Поле E-mail должно содержать действительный e-mail адрес."
             placeholder="bulochk@yandex.ru"
             required
             onChange={handleChange}

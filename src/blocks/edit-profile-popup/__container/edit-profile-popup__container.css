@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 760px) {
     .edit-profile-popup__container {
-        width: 760px;
+        max-width: 760px;
         height: 100vh;
         border-radius: 0;
     }

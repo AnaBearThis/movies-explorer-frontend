@@ -1,12 +1,12 @@
 .nav-tab {
-    padding: 0;
+    padding: 0 70px;
     display: flex;
     justify-content: space-between;
 }
 
 @media screen and (max-width: 900px) {
     .nav-tab {
-        padding-right: 5px;
+        padding: 0 30px 0 25px;
     }
 }
 

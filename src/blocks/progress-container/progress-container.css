@@ -1,6 +1,13 @@
 .progress-container {
+    padding: 0 70px;
     display: grid;
     grid-template-columns: 1fr 4fr;
+}
+
+@media screen and (max-width: 900px) {
+    .progress-container {
+        padding: 0;
+    }
 }
 
 @media screen and (max-width: 760px) {

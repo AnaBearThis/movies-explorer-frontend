@@ -1,12 +1,12 @@
 .about-me__container {
-    padding-top: 68px;
+    padding: 68px 70px 0;
     display: flex;
     justify-content: space-between;
 }
 
 @media screen and (max-width: 900px) {
     .about-me__container {
-        padding-top: 65px;
+        padding: 65px 0 0;
     }
 }
 

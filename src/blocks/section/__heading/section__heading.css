@@ -1,10 +1,16 @@
 .section__heading {
-    margin: 0;
+    margin: 0 70px;
     padding: 0 0 25px;
     font-size: 22px;
     font-weight: 400;
     letter-spacing: -1px;
     border-bottom: 1px solid;
+}
+
+@media screen and (max-width: 900px) {
+    .section__heading {
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 760px) {

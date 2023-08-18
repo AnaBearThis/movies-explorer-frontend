@@ -1,4 +1,4 @@
-.sign__buttonSubmit {
+.sign__button-submit {
     margin: 153px 0 17px;
     padding: 14px 0;
     width: 396px;
@@ -10,19 +10,19 @@
     transition: opacity 0.6s;
 }
 
-.sign__buttonSubmit:hover {
+.sign__button-submit:hover {
     cursor: pointer;
     opacity: 0.6;
 }
 
 @media screen and (max-width: 900px) {
-    .sign__buttonSubmit {
+    .sign__button-submit {
         margin: 157px 0 16px;
     }
 }
 
 @media screen and (max-width: 760px) {
-    .sign__buttonSubmit {
+    .sign__button-submit {
         margin: 242px 0 0;
         width: 260px;
         font-size: 12px;

@@ -17,4 +17,7 @@ https://movies-ana-bear.nomoredomains.xyz/
 
 ## Установка локальной версии проекта:
 
+Перейти в репозиторий с бэкендом с склонировать его  https://github.com/AnaBearThis/movies-explorer-api
+Установить зависимости, запустить проект (npm run start)
 
+Склонировать этот репозмторий с фронтендом, установить зависимости и запустить (npm run start)

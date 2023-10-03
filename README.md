@@ -17,4 +17,17 @@ https://movies-ana-bear.nomoredomains.xyz/
 
 ## Установка локальной версии проекта:
 
+Перейти в репозиторий с бэкендом с склонировать его  https://github.com/AnaBearThis/movies-explorer-api
+Если у вас не установлена MongoDB, можно скачать по этой ссылке и установить: https://mongodb.prakticum-team.ru/try/download/community
+Создайте директорию для базы данных
+Откройте Git Bash и перейдите в корень диска C:\
+cd /C 
+Создайте директорию для базы данных
+mkdir -p data/db 
+Официальная полная инструкция установки и настройки: https://mongodb.prakticum-team.ru/docs/manual/tutorial/install-mongodb-on-windows/#install-mdb-edition
+Запускаем сервер монго через команду mongod
+В графическом интерфейсе Compass подключаемся по стандартному адресу (mongodb://localhost:27017)
+Создаем новую БД под названием bitfilmsdb, а в ней 2 коллекции - movies и users
+Установить зависимости, запустить проект (npm run start)
 
+Склонировать этот репозиторий с фронтендом, установить зависимости и запустить (npm run start)

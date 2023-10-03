@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://api.movies-ana-bear.nomoredomains.xyz';
+export const BASE_URL = 'http://localhost:3000';
 
 // https://api.movies-ana-bear.nomoredomains.xyz
 

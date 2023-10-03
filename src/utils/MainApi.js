@@ -88,7 +88,7 @@ class MainApi {
 }
 
 const moviesApi = new MainApi({
-    url: 'https://api.movies-ana-bear.nomoredomains.xyz',
+    url: 'http://localhost:3000',
     headers: {
         'content-type': 'application/json',
     }
